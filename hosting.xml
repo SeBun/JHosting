@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+    <name>com_hosting</name>
+    <creationDate>September 2025</creationDate>
+    <author>Sergey Bunin</author>
+    <authorEmail>info@rameva.ru</authorEmail>
+    <authorUrl>https://rameva.ru</authorUrl>
+    <copyright>Copyright (C) 2025 Rameva.ru. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>COM_HOSTING_XML_DESCRIPTION</description>
+    
+    <namespace path="src">Joomla\Component\Hosting</namespace>
+    
+    <install>
+        <sql>
+            <file driver="postgresql" charset="utf8">sql/install.postgresql.utf8.sql</file>
+        </sql>
+    </install>
+    
+    <uninstall>
+        <sql>
+            <file driver="postgresql" charset="utf8">sql/uninstall.postgresql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    
+    <update>
+        <schemas>
+            <schemapath type="postgresql">sql/updates/postgresql</schemapath>
+        </schemas>
+    </update>
+    
+    <files>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <filename>hosting.php</filename>
+    </files>
+    
+    <media destination="com_hosting" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+    </media>
+    
+    <administration>
+        <menu img="fa fa-server">COM_HOSTING_MENU</menu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <folder>sql</folder>
+        </files>
+    </administration>
+    
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="COM_HOSTING_CONFIG_BASIC">
+                <field name="ispmanager_url" type="url" label="COM_HOSTING_CONFIG_ISPMANAGER_URL" 
+                       description="COM_HOSTING_CONFIG_ISPMANAGER_URL_DESC" default="" />
+                <field name="ispmanager_auth_type" type="list" label="COM_HOSTING_CONFIG_ISPMANAGER_AUTH_TYPE" 
+                       description="COM_HOSTING_CONFIG_ISPMANAGER_AUTH_TYPE_DESC" default="session">
+                    <option value="session">Session</option>
+                    <option value="api_key">API Key</option>
+                </field>
+                <field name="default_currency" type="list" label="COM_HOSTING_CONFIG_DEFAULT_CURRENCY" 
+                       description="COM_HOSTING_CONFIG_DEFAULT_CURRENCY_DESC" default="RUB">
+                    <option value="RUB">Russian Ruble</option>
+                    <option value="USD">US Dollar</option>
+                    <option value="EUR">Euro</option>
+                </field>
+                <field name="auto_suspend_services" type="radio" label="COM_HOSTING_CONFIG_AUTO_SUSPEND" 
+                       description="COM_HOSTING_CONFIG_AUTO_SUSPEND_DESC" default="1" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            
+            <fieldset name="payment" label="COM_HOSTING_CONFIG_PAYMENT">
+                <field name="robokassa_merchant_login" type="text" label="COM_HOSTING_CONFIG_ROBOKASSA_LOGIN" 
+                       description="COM_HOSTING_CONFIG_ROBOKASSA_LOGIN_DESC" default="" />
+                <field name="robokassa_password1" type="password" label="COM_HOSTING_CONFIG_ROBOKASSA_PASS1" 
+                       description="COM_HOSTING_CONFIG_ROBOKASSA_PASS1_DESC" default="" />
+                <field name="robokassa_password2" type="password" label="COM_HOSTING_CONFIG_ROBOKASSA_PASS2" 
+                       description="COM_HOSTING_CONFIG_ROBOKASSA_PASS2_DESC" default="" />
+                <field name="robokassa_test_mode" type="radio" label="COM_HOSTING_CONFIG_ROBOKASSA_TEST" 
+                       description="COM_HOSTING_CONFIG_ROBOKASSA_TEST_DESC" default="1" class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            
+            <fieldset name="legal" label="COM_HOSTING_CONFIG_LEGAL">
+                <field name="company_name" type="text" label="COM_HOSTING_CONFIG_COMPANY_NAME" 
+                       description="COM_HOSTING_CONFIG_COMPANY_NAME_DESC" default="" />
+                <field name="company_inn" type="text" label="COM_HOSTING_CONFIG_COMPANY_INN" 
+                       description="COM_HOSTING_CONFIG_COMPANY_INN_DESC" default="" />
+                <field name="company_address" type="textarea" label="COM_HOSTING_CONFIG_COMPANY_ADDRESS" 
+                       description="COM_HOSTING_CONFIG_COMPANY_ADDRESS_DESC" default="" rows="3" />
+                <field name="contract_template_path" type="text" label="COM_HOSTING_CONFIG_CONTRACT_TEMPLATE" 
+                       description="COM_HOSTING_CONFIG_CONTRACT_TEMPLATE_DESC" default="/templates/contract.docx" />
+            </fieldset>
+        </fields>
+    </config>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="Hosting Component Updates">
+            https://rameva.ru/updates/com_hosting.xml
+        </server>
+    </updateservers>
+</extension>

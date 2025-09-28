@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+    <name>pkg_hosting</name>
+    <packagename>hosting</packagename>
+    <version>1.0.0</version>
+    <description>PKG_HOSTING_XML_DESCRIPTION</description>
+    <author>Sergey Bunin</author>
+    <authorEmail>info@rameva.ru</authorEmail>
+    <authorUrl>https://rameva.ru</authorUrl>
+    <creationDate>September 2025</creationDate>
+    <copyright>Copyright (C) 2025 Rameva.ru. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <packager>Rameva</packager>
+    <packagerurl>https://rameva.ru</packagerurl>
+    
+    <files folder="">
+        <file type="component" id="com_hosting">com_hosting.zip</file>
+        <file type="plugin" id="plg_system_hosting" group="system">plg_system_hosting.zip</file>
+    </files>
+    
+    <blockChildUninstall>true</blockChildUninstall>
+</extension>
