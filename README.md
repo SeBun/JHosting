@@ -127,7 +127,7 @@ pkg_hosting/
 
 ## Лицензия
 
-GNU General Public License version 2 or later
+MIT License
 
 ## Поддержка
 
